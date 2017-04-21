@@ -1,36 +1,55 @@
 var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
-  entry: [
+module.exports = 
+{
+  entry: 
+  [
     './jsx/index'
   ],
-  output: {
+  output: 
+  {
     path: path.join(__dirname, 'static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-
-    new webpack.optimize.UglifyJsPlugin({
-        compressor: {
+  plugins: 
+  [
+    new webpack.optimize.UglifyJsPlugin
+    ({
+        compressor: 
+        {
             warnings: true
         }
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
     })
   ],
-  resolve: {
-    extensions: ['', '.js', '.jsx']
+  resolve: 
+  {
+      extensions: ['', '.js', '.jsx']
   },
-  module: {
-    rules: [{
-      test: /\.js|\.jsx$/,
-      loaders: ['react-hot', 'babel-loader'],
-      include: path.join(__dirname, 'jsx')
-    },
-    {
-      test: /\.less$/,
-      loader: "style!css!less"
-    }]
+  module: 
+  {
+    loaders: 
+    [
+      {
+        test: /\.jsx$/,
+        loaders: ['react-hot-loader', 'babel-loader'],
+        exclude: /node_modules/,
+        include: path.join(__dirname, 'jsx')
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader?modules'],
+        include: path.join(__dirname, 'css')
+      },
+      {
+        test: /\.(png|jpg|svg|woff|woff2|eot|ttf)$/,
+        loader: 'url-loader'
+      }
+    ]
   }
 };

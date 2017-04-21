@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import {Col, Row, Grid} from 'react-bootstrap';
 import * as d3 from 'd3';
+require('../css/style.css');
 
 class App extends Component 
 {
@@ -12,7 +13,7 @@ class App extends Component
         {
             width: "800",
             height: "600",
-            flame: "double 10px #8B4513"
+            flame: "double 10px #000000"
         };
     }
 
