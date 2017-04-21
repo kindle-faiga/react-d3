@@ -43,8 +43,7 @@ module.exports =
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader?modules'],
-        include: path.join(__dirname, 'css')
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|jpg|svg|woff|woff2|eot|ttf)$/,
